@@ -7,6 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Biblioteca para gerar o PDF direto -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -40,46 +42,6 @@
         }
         html {
             scroll-behavior: smooth;
-        }
-
-        /* Regra rigorosa para gerar PDF em 1 página exata */
-        @media print {
-            body * {
-                display: none !important;
-            }
-            html, body, #boardingPass, #boardingPass * {
-                visibility: visible !important;
-                display: block !important;
-            }
-            html, body {
-                width: 100% !important;
-                height: 100% !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                overflow: hidden !important;
-                background: white !important;
-            }
-            #boardingPass {
-                position: absolute !important;
-                left: 50% !important;
-                top: 50% !important;
-                transform: translate(-50%, -50%) !important;
-                width: 90% !important;
-                max-width: 500px !important;
-                box-shadow: none !important;
-                border: 2px dashed #591925 !important;
-                margin: 0 !important;
-                page-break-before: avoid !important;
-                page-break-after: avoid !important;
-                page-break-inside: avoid !important;
-            }
-            #boardingPass button {
-                display: none !important;
-            }
-            @page {
-                size: A4 portrait;
-                margin: 0;
-            }
         }
     </style>
 </head>
@@ -429,8 +391,9 @@
                         <strong class="text-gray-800">19/12/2026 • 15:00</strong>
                     </div>
                 </div>
-                <p class="text-[11px] text-gray-500 text-center mb-4">Apresente este cartão digital ou guarde o PDF gerado.</p>
-                <button onclick="window.print()" class="w-full bg-burgundy hover:bg-burgundy-dark text-white py-3 rounded text-xs uppercase tracking-wider font-semibold transition-colors shadow flex items-center justify-center gap-2"><i class="fas fa-file-pdf"></i> Baixar Cartão em PDF (1 Página)</button>
+                <p class="text-[11px] text-gray-500 text-center mb-4">Apresente este cartão digital ou o PDF descarregado.</p>
+                <!-- Botão que puxa o download direto do PDF -->
+                <button id="downloadPdfBtn" onclick="downloadPDF()" class="w-full bg-burgundy hover:bg-burgundy-dark text-white py-3 rounded text-xs uppercase tracking-wider font-semibold transition-colors shadow flex items-center justify-center gap-2"><i class="fas fa-file-pdf"></i> Baixar Cartão em PDF</button>
             </div>
         </div>
     </section>
@@ -451,7 +414,7 @@
         </div>
     </div>
 
-    <footer class="bg-burgundy-dark text-white text-center py-16 px-6">
+    <footer class="bg-burgundy-dark text-white text-center py-16 px6">
         <h2 class="font-serif text-3xl text-gray-200 font-normal mb-2">Esperamos você na nossa festa!</h2>
         <div class="font-serif text-xl tracking-[3px] text-gold mb-8">Weslley & Poliana</div>
         <p class="text-xs text-gray-400">© 2026 Weslley & Poliana</p>
@@ -502,7 +465,7 @@
             
             document.getElementById('btnWeslley').href = `https://wa.me/5519981814224?text=${encodedMsg}`;
             document.getElementById('btnPoliana').href = `https://wa.me/554298543755?text=${encodedMsg}`;
-            document.getElementById('modalItemText').innerText = `Presente selecionado: "${itemName}". Com quem deseja falar?`;
+            document.getElementById('modalItemText', `Presente selecionado: "${itemName}". Com quem deseja falar?`);
             
             document.getElementById('waModal').classList.remove('hidden');
             document.getElementById('waModal').classList.add('flex');
@@ -543,6 +506,28 @@
             document.getElementById('passCompanion').innerText = companion;
             document.getElementById('passClassBadge').innerText = flightClass;
             document.getElementById('boardingPass').classList.remove('hidden');
+        }
+
+        // Função que descarrega o PDF automaticamente sem abrir tela de impressão
+        function downloadPDF() {
+            const element = document.getElementById('boardingPass');
+            const btn = document.getElementById('downloadPdfBtn');
+            
+            // Esconde o botão temporariamente para não sair no PDF
+            btn.style.display = 'none';
+
+            const opt = {
+                margin:       10,
+                filename:     'cartao-de-embarque-casamento.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().from(element).set(opt).save().then(() => {
+                // Devolve o botão após baixar
+                btn.style.display = 'flex';
+            });
         }
     </script>
 </body>
