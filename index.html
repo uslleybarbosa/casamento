@@ -28,7 +28,7 @@
             }
         }
     </script>
-   <style>
+    <style>
         @keyframes flyAcross {
             0% { transform: translateX(-150vw) translateY(30px) rotate(-5deg); opacity: 0; }
             10% { opacity: 1; }
@@ -41,19 +41,16 @@
         html {
             scroll-behavior: smooth;
         }
-    @media print {
-            /* Esconde absolutamente tudo na página */
+
+        /* Regra rigorosa para gerar PDF em 1 página exata */
+        @media print {
             body * {
                 display: none !important;
             }
-
-            /* Liberta apenas o body, html e o cartão */
             html, body, #boardingPass, #boardingPass * {
                 visibility: visible !important;
                 display: block !important;
             }
-
-            /* Força a página de impressão a ter o tamanho exato de uma folha e esconde o resto */
             html, body {
                 width: 100% !important;
                 height: 100% !important;
@@ -62,26 +59,23 @@
                 overflow: hidden !important;
                 background: white !important;
             }
-
-            /* Trava o cartão no centro exato da única folha A4 */
             #boardingPass {
                 position: absolute !important;
                 left: 50% !important;
                 top: 50% !important;
                 transform: translate(-50%, -50%) !important;
-                width: 85% !important;
-                max-width: 450px !important;
+                width: 90% !important;
+                max-width: 500px !important;
                 box-shadow: none !important;
                 border: 2px dashed #591925 !important;
                 margin: 0 !important;
+                page-break-before: avoid !important;
+                page-break-after: avoid !important;
+                page-break-inside: avoid !important;
             }
-
-            /* Tira o botão de imprimir */
             #boardingPass button {
                 display: none !important;
             }
-
-            /* Força estritamente o limite de 1 página no papel */
             @page {
                 size: A4 portrait;
                 margin: 0;
@@ -104,7 +98,6 @@
             <a href="#presentes" class="hover:text-luxuryBlueLight transition-colors">Presentes</a>
             <a href="#confirmacao" class="hover:text-luxuryBlueLight transition-colors text-burgundy font-semibold">Confirmação</a>
         </nav>
-        <!-- Mobile Dropdown -->
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white border-b border-borderGold flex flex-col items-center py-6 gap-4 md:hidden shadow-lg">
             <a href="#inicio" class="mobile-link text-xs tracking-[2px] uppercase font-medium">Início</a>
             <a href="#historia" class="mobile-link text-xs tracking-[2px] uppercase font-medium">História</a>
@@ -119,7 +112,6 @@
         <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center brightness-[0.4] z-0"></div>
         <div class="absolute inset-0 bg-black/35 z-0"></div>
         
-        <!-- Airplane & Smoke Trail -->
         <div class="absolute top-[27%] left-[-300px] w-64 h-[6px] bg-gradient-to-r from-transparent to-white/90 rounded-full blur-[4px] z-10 animate-flight"></div>
         <div class="absolute top-[25%] left-[-150px] text-3xl text-white z-10 animate-flight drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
             <i class="fas fa-plane"></i>
@@ -209,7 +201,6 @@
         <div class="max-w-6xl mx-auto">
             <h3 class="font-serif text-xl sm:text-2xl text-luxuryBlue mb-6 sm:mb-8 pb-2 border-b border-borderGold">💰 Opções Mais Econômicas e Indicadas</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Hotel 1 -->
                 <div class="bg-white p-6 rounded-lg border border-borderGold shadow-sm flex flex-col justify-between">
                     <div>
                         <h4 class="font-serif text-lg font-bold text-burgundy mb-2">1. Pousada São Francisco</h4>
@@ -222,7 +213,6 @@
                         <a href="https://maps.google.com/?q=Rua+Julio+Silveira+2+Irati" target="_blank" class="flex-1 bg-luxuryBlue hover:bg-luxuryBlueLight text-white py-2 rounded text-center text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"><i class="fas fa-map-marker-alt"></i> Mapa</a>
                     </div>
                 </div>
-                <!-- Hotel 2 -->
                 <div class="bg-white p-6 rounded-lg border border-borderGold shadow-sm flex flex-col justify-between">
                     <div>
                         <h4 class="font-serif text-lg font-bold text-burgundy mb-2">2. Pousada Ruby</h4>
@@ -235,7 +225,6 @@
                         <a href="https://maps.google.com/?q=Pousada+Ruby+Irati+PR" target="_blank" class="flex-1 bg-luxuryBlue hover:bg-luxuryBlueLight text-white py-2 rounded text-center text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"><i class="fas fa-map-marker-alt"></i> Mapa</a>
                     </div>
                 </div>
-                <!-- Hotel 3 -->
                 <div class="bg-white p-6 rounded-lg border border-borderGold shadow-sm flex flex-col justify-between">
                     <div>
                         <h4 class="font-serif text-lg font-bold text-burgundy mb-2">3. Pousada Senda do Sol</h4>
@@ -248,7 +237,6 @@
                         <a href="https://maps.google.com/?q=Pousada+Senda+do+Sol+Irati" target="_blank" class="flex-1 bg-luxuryBlue hover:bg-luxuryBlueLight text-white py-2 rounded text-center text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"><i class="fas fa-map-marker-alt"></i> Mapa</a>
                     </div>
                 </div>
-                <!-- Hotel 4 -->
                 <div class="bg-white p-6 rounded-lg border border-borderGold shadow-sm flex flex-col justify-between">
                     <div>
                         <h4 class="font-serif text-lg font-bold text-burgundy mb-2">4. Hotel Abib</h4>
@@ -261,7 +249,6 @@
                         <a href="https://maps.google.com/?q=Hotel+Abib+Irati" target="_blank" class="flex-1 bg-luxuryBlue hover:bg-luxuryBlueLight text-white py-2 rounded text-center text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"><i class="fas fa-map-marker-alt"></i> Mapa</a>
                     </div>
                 </div>
-                <!-- Hotel 5 -->
                 <div class="bg-white p-6 rounded-lg border border-borderGold shadow-sm flex flex-col justify-between">
                     <div>
                         <h4 class="font-serif text-lg font-bold text-burgundy mb-2">5. Chalé Romântico</h4>
@@ -274,7 +261,6 @@
                         <a href="https://maps.google.com/?q=Irati+PR" target="_blank" class="flex-1 bg-luxuryBlue hover:bg-luxuryBlueLight text-white py-2 rounded text-center text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"><i class="fas fa-map-marker-alt"></i> Mapa</a>
                     </div>
                 </div>
-                <!-- Hotel 6 -->
                 <div class="bg-white p-6 rounded-lg border border-borderGold shadow-sm flex flex-col justify-between">
                     <div>
                         <h4 class="font-serif text-lg font-bold text-burgundy mb-2">6. Hotel Sollievo</h4>
@@ -303,9 +289,7 @@
         </div>
 
         <div class="max-w-4xl mx-auto">
-            <!-- TAB CONVIDADOS -->
             <div id="tab-convidados" class="space-y-4">
-                <!-- Quarto -->
                 <div class="bg-white rounded-lg border border-borderGold overflow-hidden shadow-sm">
                     <div onclick="toggleAccordion(this)" class="bg-sand p-4 sm:p-5 cursor-pointer flex justify-between items-center font-serif text-lg sm:text-xl font-semibold text-luxuryBlue">
                         <span>🛏️ Quarto / Cama</span>
@@ -322,7 +306,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Cozinha -->
                 <div class="bg-white rounded-lg border border-borderGold overflow-hidden shadow-sm">
                     <div onclick="toggleAccordion(this)" class="bg-sand p-4 sm:p-5 cursor-pointer flex justify-between items-center font-serif text-lg sm:text-xl font-semibold text-luxuryBlue">
                         <span>🍳 Cozinha</span>
@@ -352,7 +335,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Lavanderia -->
                 <div class="bg-white rounded-lg border border-borderGold overflow-hidden shadow-sm">
                     <div onclick="toggleAccordion(this)" class="bg-sand p-4 sm:p-5 cursor-pointer flex justify-between items-center font-serif text-lg sm:text-xl font-semibold text-luxuryBlue">
                         <span>🧺 Lavanderia / Limpeza & Outros</span>
@@ -371,7 +353,6 @@
                 </div>
             </div>
 
-            <!-- TAB PADRINHOS -->
             <div id="tab-padrinhos" class="hidden space-y-4">
                 <div class="bg-white rounded-lg border border-borderGold overflow-hidden shadow-sm">
                     <div onclick="toggleAccordion(this)" class="bg-sand p-4 sm:p-5 cursor-pointer flex justify-between items-center font-serif text-lg sm:text-xl font-semibold text-luxuryBlue">
@@ -425,7 +406,6 @@
                 <button type="button" onclick="generateBoardingPass()" class="w-full bg-luxuryBlue hover:bg-luxuryBlueLight text-white py-4 rounded-md uppercase tracking-[2px] text-xs font-semibold transition-colors shadow">Confirmar e Gerar Cartão de Embarque</button>
             </form>
 
-            <!-- Boarding Pass Result Card -->
             <div id="boardingPass" class="hidden mt-8 bg-white border-2 border-dashed border-burgundy p-6 rounded-lg relative">
                 <div class="flex justify-between items-center border-b border-borderGold pb-3 mb-4 text-burgundy font-bold text-xs">
                     <span>✈️ CARTÃO DE EMBARQUE • CASAMENTO</span>
@@ -449,8 +429,8 @@
                         <strong class="text-gray-800">19/12/2026 • 15:00</strong>
                     </div>
                 </div>
-                <p class="text-[11px] text-gray-500 text-center mb-4">Apresente este cartão digital ou impresso na portaria do evento.</p>
-                <button onclick="window.print()" class="w-full bg-burgundy hover:bg-burgundy-dark text-white py-2.5 rounded text-xs uppercase tracking-wider font-semibold transition-colors"><i class="fas fa-print"></i> Imprimir Cartão</button>
+                <p class="text-[11px] text-gray-500 text-center mb-4">Apresente este cartão digital ou guarde o PDF gerado.</p>
+                <button onclick="window.print()" class="w-full bg-burgundy hover:bg-burgundy-dark text-white py-3 rounded text-xs uppercase tracking-wider font-semibold transition-colors shadow flex items-center justify-center gap-2"><i class="fas fa-file-pdf"></i> Baixar Cartão em PDF (1 Página)</button>
             </div>
         </div>
     </section>
@@ -478,7 +458,6 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         mobileMenuBtn.addEventListener('click', () => {
@@ -488,7 +467,6 @@
             link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
         });
 
-        // Gift Tabs Switching
         function switchTab(tab) {
             const btnConvidados = document.getElementById('btn-tab-convidados');
             const btnPadrinhos = document.getElementById('btn-tab-padrinhos');
@@ -508,7 +486,6 @@
             }
         }
 
-        // Accordion Toggle
         function toggleAccordion(header) {
             const content = header.nextElementSibling;
             const icon = header.querySelector('i');
@@ -516,7 +493,6 @@
             icon.classList.toggle('rotate-180');
         }
 
-        // WhatsApp Modal Handling
         function openWhatsAppModal(itemName, type) {
             let msg = type === 'padrinho' 
                 ? `Olá! Como padrinho/madrinha, gostaria de oferecer o item: ${itemName}.` 
@@ -537,7 +513,6 @@
             document.getElementById('waModal').classList.remove('flex');
         }
 
-        // Countdown Timer to Dec 19, 2026 15:00:00
         const weddingDate = new Date('December 19, 2026 15:00:00').getTime();
         setInterval(() => {
             const now = new Date().getTime();
@@ -550,7 +525,6 @@
             }
         }, 1000);
 
-        // Generate Boarding Pass
         function generateBoardingPass() {
             const name = document.getElementById('guestName').value.trim();
             const companion = document.getElementById('guestCompanion').value;
