@@ -41,28 +41,39 @@
         html {
             scroll-behavior: smooth;
         }
-     @media print {
-            /* Esconde tudo no site */
+    @media print {
+            /* Esconde absolutamente tudo na página */
             body * {
-                visibility: hidden !important;
-            }
-            #boardingPass, #boardingPass * {
-                visibility: visible !important;
+                display: none !important;
             }
 
-            /* Força o cartão a ocupar o espaço normal e puxa margens automáticas para centrar */
-            #boardingPass {
-                position: static !important;
+            /* Liberta apenas o body, html e o cartão */
+            html, body, #boardingPass, #boardingPass * {
+                visibility: visible !important;
                 display: block !important;
+            }
+
+            /* Força a página de impressão a ter o tamanho exato de uma folha e esconde o resto */
+            html, body {
                 width: 100% !important;
-                max-width: 500px !important;
-                margin: 40px auto !important;
+                height: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                overflow: hidden !important;
+                background: white !important;
+            }
+
+            /* Trava o cartão no centro exato da única folha A4 */
+            #boardingPass {
+                position: absolute !important;
+                left: 50% !important;
+                top: 50% !important;
+                transform: translate(-50%, -50%) !important;
+                width: 85% !important;
+                max-width: 450px !important;
                 box-shadow: none !important;
-                border: 22px dashed #591925 !important;
-                float: none !important;
-                page-break-before: avoid !important;
-                page-break-after: avoid !important;
-                page-break-inside: avoid !important;
+                border: 2px dashed #591925 !important;
+                margin: 0 !important;
             }
 
             /* Tira o botão de imprimir */
@@ -70,9 +81,10 @@
                 display: none !important;
             }
 
+            /* Força estritamente o limite de 1 página no papel */
             @page {
-                size: portrait;
-                margin: 20mm;
+                size: A4 portrait;
+                margin: 0;
             }
         }
     </style>
