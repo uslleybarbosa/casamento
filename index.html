@@ -41,8 +41,8 @@
         html {
             scroll-behavior: smooth;
         }
-       @media print {
-            /* Esconde tudo na página menos o cartão */
+     @media print {
+            /* Esconde tudo no site */
             body * {
                 visibility: hidden !important;
             }
@@ -50,29 +50,29 @@
                 visibility: visible !important;
             }
 
-            /* Põe o cartão no topo e centralizado na folha */
+            /* Força o cartão a ocupar o espaço normal e puxa margens automáticas para centrar */
             #boardingPass {
-                position: absolute !important;
-                left: 50% !important;
-                top: 40% !important;
-                transform: translate(-50%, -50%) !important;
-                width: 90% !important;
-                max-width: 600px !important;
+                position: static !important;
+                display: block !important;
+                width: 100% !important;
+                max-width: 500px !important;
+                margin: 40px auto !important;
                 box-shadow: none !important;
-                border: 2px dashed #591925 !important;
+                border: 22px dashed #591925 !important;
+                float: none !important;
                 page-break-before: avoid !important;
                 page-break-after: avoid !important;
                 page-break-inside: avoid !important;
             }
 
-            /* Tira o botão de imprimir do papel */
+            /* Tira o botão de imprimir */
             #boardingPass button {
                 display: none !important;
             }
 
             @page {
                 size: portrait;
-                margin: 10mm;
+                margin: 20mm;
             }
         }
     </style>
