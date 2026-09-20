@@ -42,31 +42,37 @@
             scroll-behavior: smooth;
         }
 
-        /* Regra de Impressão Definitiva e Correta */
-        @media print {
-            /* Esconde todos os elementos do body de forma segura */
+       @media print {
+            /* Esconde tudo o resto do site */
             body {
                 visibility: hidden !important;
                 background: white !important;
+                height: 100vh !important;
+                margin: 0 !important;
             }
 
-            /* Torna visível apenas o cartão e os seus elementos internos */
+            /* Torna o cartão e o seu conteúdo visíveis */
             #boardingPass, #boardingPass * {
                 visibility: visible !important;
             }
 
-            /* Posiciona o cartão no topo da folha sem gerar páginas extras */
+            /* Centra o cartão vertical e horizontalmente na página A4 */
+            body {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+
             #boardingPass {
-                position: absolute !important;
-                left: 0 !important;
-                top: 0 !important;
+                position: relative !important;
                 width: 100% !important;
-                max-width: 100% !important;
-                margin: 0 !important;
+                max-width: 650px !important; /* Mantém o cartão com uma largura elegante e não gigante */
+                margin: auto !important;
                 box-shadow: none !important;
                 border: 2px dashed #591925 !important;
                 page-break-after: avoid !important;
                 page-break-inside: avoid !important;
+                page-break-before: avoid !important;
             }
 
             /* Esconde o botão de imprimir */
@@ -75,8 +81,8 @@
             }
 
             @page {
-                size: portrait;
-                margin: 10mm;
+                size: A4 portrait;
+                margin: 15mm;
             }
         }
     </style>
