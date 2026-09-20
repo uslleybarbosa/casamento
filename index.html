@@ -42,37 +42,43 @@
             scroll-behavior: smooth;
         }
 
-        /* Regra de Impressão Otimizada para 1 única página */
+        /* Regra de Impressão Corrigida para 1 página exata */
         @media print {
-            body * {
-                visibility: hidden !important;
+            body > *:not(#boardingPass) {
+                display: none !important;
             }
-            #boardingPass, #boardingPass * {
-                visibility: visible !important;
+            
+            html, body {
+                margin: 0 !important;
+                padding: 0 !important;
+                background: #ffffff !important;
+                height: auto !important;
             }
+
             #boardingPass {
-                position: fixed !important;
-                left: 0 !important;
-                top: 0 !important;
+                position: relative !important;
+                display: block !important;
                 width: 100% !important;
                 max-width: 100% !important;
-                border: 2px dashed #591925 !important;
+                margin: 0 auto !important;
                 box-shadow: none !important;
-                margin: 0 !important;
-                padding: 20px !important;
-                page-break-after: avoid !important;
+                border: 2px dashed #591925 !important;
                 page-break-inside: avoid !important;
+                page-break-after: avoid !important;
+                page-break-before: avoid !important;
             }
-            /* Esconde o botão de imprimir na folha impressa */
+
             #boardingPass button {
                 display: none !important;
             }
+
             @page {
-                size: auto;
+                size: portrait;
                 margin: 10mm;
             }
         }
     </style>
+          
 </head>
 <body class="bg-white text-[#2C2C2C] font-sans antialiased selection:bg-burgundy selection:text-white overflow-x-hidden">
 
