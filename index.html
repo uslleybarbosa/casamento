@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weslley & Poliana | Nosso Casamento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        burgundy: '#591925',
+                        'burgundy-dark': '#3b1018',
+                        luxuryBlue: '#1A365D',
+                        luxuryBlueLight: '#2B6CB0',
+                        gold: '#D4AF37',
+                        sand: '#F9F8F6',
+                        borderGold: '#E6DFD5'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes flyAcross {
+            0% { transform: translateX(-150vw) translateY(30px) rotate(-5deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateX(180vw) translateY(-50px) rotate(-15deg); opacity: 0; }
+        }
+        .animate-flight {
+            animation: flyAcross 14s linear infinite;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-white text-[#2C2C2C] font-sans antialiased selection:bg-burgundy selection:text-white">
+
+    <header class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md z-50 flex justify-between items-center px-6 lg:px-16 py-4 border-b border-borderGold">
+        <div class="font-serif text-xl font-bold tracking-widest text-burgundy uppercase">W & P</div>
+        <div class="md:hidden text-xl text-burgundy cursor-pointer" id="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav class="hidden md:flex gap-8 items-center text-xs tracking-[2px] uppercase font-medium">
+            <a href="#inicio" class="hover:text-luxuryBlueLight transition-colors">Início</a>
+            <a href="#historia" class="hover:text-luxuryBlueLight transition-colors">História</a>
+            <a href="#local" class="hover:text-luxuryBlueLight transition-colors">Local</a>
+            <a href="#hospedagem" class="hover:text-luxuryBlueLight transition-colors">Hospedagem</a>
+            <a href="#presentes" class="hover:text-luxuryBlueLight transition-colors">Presentes</a>
+            <a href="#confirmacao" class="hover:text-luxuryBlueLight transition-colors text-burgundy font-semibold">Confirmação</a>
+        </nav>
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white border-b border-borderGold flex flex-col items-center py-6 gap-4 md:hidden shadow-lg">
+            <a href="#inicio" class="mobile-link text-xs tracking-[2px] uppercase font-medium">Início</a>
+            <a href="#historia" class="mobile-link text-xs tracking-[2px] uppercase font-medium">História</a>
+            <a href="#local" class="mobile-link text-xs tracking-[2px] uppercase font-medium">Local</a>
+            <a href="#hospedagem" class="mobile-link text-xs tracking-[2px] uppercase font-medium">Hospedagem</a>
+            <a href="#presentes" class="mobile-link text-xs tracking-[2px] uppercase font-medium">Presentes</a>
+            <a href="#confirmacao" class="mobile-link text-xs tracking-[2px] uppercase font-semibold text-burgundy">Confirmação</a>
+        </div>
+    </header>
+
+    <section id="inicio" class="relative h-screen flex items-center justify-center text-center text-white overflow-hidden bg-gradient-to-br from-luxuryBlue to-burgundy-dark px-4">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center brightness-[0.4] z-0"></div>
+        <div class="absolute inset-0 bg-black/35 z-0"></div>
+        
+        <!-- Airplane & Smoke Trail -->
+        <div class="absolute top-[27%] left-[-300px] w-64 h-[6px] bg-gradient-to-r from-transparent to-white/90 rounded-full blur-[4px] z-10 animate-flight"></div>
+        <div class="absolute top-[25%] left-[-150px] text-3xl text-white z-10 animate-flight drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
+            <i class="fas fa-plane"></i>
+        </div>
+
+        <div class="relative z-20 max-w-4xl mx-auto">
+            <p class="text-xs uppercase tracking-[4px] mb-4 text-gold font-semibold">De São Paulo para o Paraná • O Fim da Distância</p>
+            <h1 class="font-serif text-5xl md:text-7xl font-normal tracking-wide mb-3">Weslley & Poliana</h1>
+            <p class="text-sm md:text-base tracking-[3px] font-light mb-10">19 de Dezembro de 2026 • Irati, PR</p>
+            
+            <div class="flex justify-center gap-3 md:gap-6">
+                <div class="bg-white/10 backdrop-blur-md px-4 py-3 rounded-lg min-w-[75px] border border-white/20">
+                    <span id="days" class="block font-serif text-2xl md:text-3xl font-bold">00</span>
+                    <label class="text-[9px] uppercase tracking-wider text-white/80">Dias</label>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md px-4 py-3 rounded-lg min-w-[75px] border border-white/20">
+                    <span id="hours" class="block font-serif text-2xl md:text-3xl font-bold">00</span>
+                    <label class="text-[9px] uppercase tracking-wider text-white/80">Horas</label>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md px-4 py-3 rounded-lg min-w-[75px] border border-white/20">
+                    <span id="mins" class="block font-serif text-2xl md:text-3xl font-bold">00</span>
+                    <label class="text-[9px] uppercase tracking-wider text-white/80">Minutos</label>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md px-4 py-3 rounded-lg min-w-[75px] border border-white/20">
+                    <span id="secs" class="block font-serif text-2xl md:text-3xl font-bold">00</span>
+                    <label class="text-[9px] uppercase tracking-wider text-white/80">Segundos</label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="historia" class="py-24 px-6 lg:px-24">
+        <div class="text-center mb-16">
+            <h2 class="font-serif text-4xl text-burgundy font-normal mb-2">Nossa História</h2>
+            <div class="w-10 h-[1px] bg-gold mx-auto"></div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div>
+                <h3 class="font-serif text-3xl text-luxuryBlue font-normal mb-6">O Fim da Distância</h3>
+                <p class="text-gray-600 font-light mb-4 text-base leading-relaxed">São Paulo e Paraná finalmente unidas no mesmo destino: o altar. Foram anos de voos frequentes pelo Aeroporto de Viracopos, pontes aéreas e saudades que agora viram lembrança boa.</p>
+                <p class="text-gray-600 font-light text-base leading-relaxed">Mal podemos esperar para celebrar este grande dia ao lado de quem amamos e faz parte da nossa trajetória.</p>
+            </div>
+            <div class="relative rounded-lg overflow-hidden shadow-2xl border border-borderGold group">
+                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80" alt="Aeroporto de Viracopos" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute bottom-0 left-0 w-full bg-luxuryBlue/85 text-white text-center py-2.5 text-xs tracking-wider">
+        
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="local" class="py-24 px-6 lg:px-24 bg-sand">
+        <div class="text-center mb-16">
+            <h2 class="font-serif text-4xl text-burgundy font-normal mb-2">Local & Horário</h2>
+            <div class="w-10 h-[1px] bg-gold mx-auto"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="bg-white p-10 rounded-lg text-center border border-borderGold shadow-sm hover:-translate-y-1 transition-transform">
+                <i class="fas fa-calendar-alt text-3xl text-luxuryBlue mb-4"></i>
+                <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">Data</h3>
+                <p class="text-gray-600 font-light">19 de Dezembro de 2026</p>
+                <p class="text-xs text-gray-500 mt-1">Sábado às 15:00</p>
+            </div>
+            <div class="bg-white p-10 rounded-lg text-center border border-borderGold shadow-sm hover:-translate-y-1 transition-transform">
+                <i class="fas fa-map-marker-alt text-3xl text-luxuryBlue mb-4"></i>
+                <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">Endereço</h3>
+                <p class="text-gray-600 font-light">Salão de Festas</p>
+                <div class="bg-sand p-3 rounded mt-3 text-xs text-burgundy font-medium border border-borderGold">
+                    R. Ângela Borazo Bonete, 4<br>Irati – PR
+                </div>
+            </div>
+            <div class="bg-white p-10 rounded-lg text-center border border-borderGold shadow-sm hover:-translate-y-1 transition-transform">
+                <i class="fas fa-palette text-3xl text-luxuryBlue mb-4"></i>
+                <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">Dress Code</h3>
+                <p class="text-gray-600 font-light">Esporte Fino / Social</p>
+                <p class="text-xs text-gray-500 mt-1">Paleta: Bordô, Branco e Azul</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="hospedagem" class="py-24 px-6 lg:px-24">
+        <div class="text-center mb-12">
+            <h2 class="font-serif text-4xl text-burgundy font-normal mb-2">Hospedagem em Irati</h2>
+            <div class="w-10 h-[1px] bg-gold mx-auto"></div>
+        </div>
+        <p class="text-center max-w-2xl mx-auto text-gray-600 text-sm font-light mb-16">
+            Para os convidados que vêm de longe, separamos as opções em Irati/PR com valores de referência e links diretos para contato ou localização.
+        </p>
+
+        <div class="max-w-6xl mx-auto">
+            <h3 class="font-serif text-2xl text-luxuryBlue mb-8 pb-2 border-b border-borderGold">💰 Opções Mais Econômicas e Indicadas</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Hotel 1 -->
+                <div class="bg-white p-6 rounded-lg border border-borderGold shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-serif text-lg font-bold text-burgundy mb-2">1. Pousada São Francisco</h4>
+                        <p class="text-xs text-gray-600 font-semibold mb-1">📍 R. Júlio Silveira, 2</p>
+                        <p class="text-xs text-gray-500 mb-3">⭐ 9,3/10 | Estacionamento e Wi-Fi gratuitos</p>
+                        <span class="inline-block bg-sand px-3 py-1 rounded text-xs font-bold text-luxuryBlue mb-4">a partir de R$ 81,55 / noite</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="https://wa.me/5542999999999?text=Olá,%20gostaria%20de%20consultar%20vagas%20para%20o%20casamento." target="_blank" class="flex-1 bg-burgundy hover:bg-burgundy-dark text-white py-2 rounded text-center text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"><i class="fab fa-whatsapp"></i> Reservar</a>
+                        <a href="https://maps.google.com/?q=Rua+Julio+Silveira+2+Irati" target="_blank" class="flex-1 bg-luxuryBlue hover:bg-luxuryBlueLight text-white py-2 rounded text-center text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"><i class="fas fa-map-marker-alt"></i> Mapa</a>
+                    </div>
+                </div>
+                <!-- Hotel 2 -->
+                <div class="bg-white p-6 rounded-lg border border-borderGold shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-serif text-lg font-bold text-burgundy mb-2">2. Pousada Ruby</h4>
+                        <p class="text-xs text-gray-600 font-semibold mb-1">📍 Irati – PR</p>
+                        <p class="text-xs text-gray-500 mb-3">⭐ 9,7/10 | Ar-condicionado e Café da manhã</p>
+                        <span class="inline-block bg-sand px-3 py-1 rounded text-xs font-bold text-luxuryBlue mb-4">a partir de R$ 190,29 / noite</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="https://wa.me/5542999999999?text=Olá,%20gostaria%20de%20consultar%20vagas." target="_blank" class="flex-1 bg-burgundy hover:bg-burgundy-dark text-white py-2 rounded text-center text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"><i class="fab fa-whatsapp"></i> Reservar</a>
+                        <a href="https://maps.google.com/?q=Pousada+Ruby+Irati+PR" target="_blank" class="flex-1 bg-luxuryBlue hover:bg-luxuryBlueLight text-white py-2 rounded text-center text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"><i class="fas fa-map-marker-alt"></i> Mapa</a>
+                    </div>
+                </div>
+                <!-- Hotel 3 -->
+                <div class="bg-white p-6 rounded-lg border border-borderGold shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-serif text-lg font-bold text-burgundy mb-2">3. Pousada Senda do Sol</h4>
+                        <p class="text-xs text-gray-600 font-semibold mb-1">📍 Irati – PR</p>
+                        <p class="text-xs text-gray-500 mb-3">⭐ 9,1/10 | Área verde / chácara e Wi-Fi</p>
+                        <span class="inline-block bg-sand px-3 py-1 rounded text-xs font-bold text-luxuryBlue mb-4">a partir de R$ 218,45 / noite</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="https://wa.me/5542999999999?text=Olá,%20gostaria%20de%20consultar%20vagas." target="_blank" class="flex-1 bg-burgundy hover:bg-burgundy-dark text-white py-2 rounded text-center text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"><i class="fab fa-whatsapp"></i> Reservar</a>
+                        <a href="https://maps.google.com/?q=Pousada+Senda+do+Sol+Irati" target="_blank" class="flex-1 bg-luxuryBlue hover:bg-luxuryBlueLight text-white py-2 rounded text-center text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"><i class="fas fa-map-marker-alt"></i> Mapa</a>
+                    </div>
+                </div>
+                <!-- Hotel 4 -->
+                <div class="bg-white p-6 rounded-lg border border-borderGold shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-serif text-lg font-bold text-burgundy mb-2">4. Hotel Abib</h4>
+                        <p class="text-xs text-gray-600 font-semibold mb-1">📍 R. Dr. João Cândido Ferreira, 776</p>
+                        <p class="text-xs text-gray-500 mb-3">⭐ 8,9/10 | Café da manhã e Estacionamento</p>
+                        <span class="inline-block bg-sand px-3 py-1 rounded text-xs font-bold text-luxuryBlue mb-4">a partir de R$ 234,00 / noite</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="https://wa.me/5542999999999?text=Olá,%20gostaria%20de%20consultar%20vagas." target="_blank" class="flex-1 bg-burgundy hover:bg-burgundy-dark text-white py-2 rounded text-center text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"><i class="fab fa-whatsapp"></i> Reservar</a>
+                        <a href="https://maps.google.com/?q=Hotel+Abib+Irati" target="_blank" class="flex-1 bg-luxuryBlue hover:bg-luxuryBlueLight text-white py-2 rounded text-center text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"><i class="fas fa-map-marker-alt"></i> Mapa</a>
+                    </div>
+                </div>
+                <!-- Hotel 5 -->
+                <div class="bg-white p-6 rounded-lg border border-borderGold shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-serif text-lg font-bold text-burgundy mb-2">5. Chalé Romântico</h4>
+                        <p class="text-xs text-gray-600 font-semibold mb-1">📍 Irati – PR</p>
+                        <p class="text-xs text-gray-500 mb-3">⭐ 10/10 | Ideal para casais com varanda</p>
+                        <span class="inline-block bg-sand px-3 py-1 rounded text-xs font-bold text-luxuryBlue mb-4">a partir de R$ 257,77 / noite</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="https://wa.me/5542999999999?text=Olá,%20gostaria%20de%20consultar%20vagas." target="_blank" class="flex-1 bg-burgundy hover:bg-burgundy-dark text-white py-2 rounded text-center text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"><i class="fab fa-whatsapp"></i> Reservar</a>
+                        <a href="https://maps.google.com/?q=Irati+PR" target="_blank" class="flex-1 bg-luxuryBlue hover:bg-luxuryBlueLight text-white py-2 rounded text-center text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"><i class="fas fa-map-marker-alt"></i> Mapa</a>
+                    </div>
+                </div>
+                <!-- Hotel 6 -->
+                <div class="bg-white p-6 rounded-lg border border-borderGold shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-serif text-lg font-bold text-burgundy mb-2">6. Hotel Sollievo</h4>
+                        <p class="text-xs text-gray-600 font-semibold mb-1">📍 R. Benjamin Constant, 465 – Centro</p>
+                        <p class="text-xs text-gray-500 mb-3">⭐ 9,0/10 | Localização central com café</p>
+                        <span class="inline-block bg-sand px-3 py-1 rounded text-xs font-bold text-luxuryBlue mb-4">a partir de R$ 370,00 / noite</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="https://wa.me/5542999999999?text=Olá,%20gostaria%20de%20consultar%20vagas." target="_blank" class="flex-1 bg-burgundy hover:bg-burgundy-dark text-white py-2 rounded text-center text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"><i class="fab fa-whatsapp"></i> Reservar</a>
+                        <a href="https://maps.google.com/?q=Hotel+Sollievo+Irati" target="_blank" class="flex-1 bg-luxuryBlue hover:bg-luxuryBlueLight text-white py-2 rounded text-center text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"><i class="fas fa-map-marker-alt"></i> Mapa</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="presentes" class="py-24 px-6 lg:px-24 bg-sand">
+        <div class="text-center mb-12">
+            <h2 class="font-serif text-4xl text-burgundy font-normal mb-2">Lista de Presentes</h2>
+            <div class="w-10 h-[1px] bg-gold mx-auto"></div>
+        </div>
+
+        <div class="flex justify-center gap-4 mb-12">
+            <button id="btn-tab-convidados" onclick="switchTab('convidados')" class="px-6 py-3 rounded-md font-semibold text-xs tracking-wider uppercase bg-burgundy text-white shadow transition-all">Presentes para Convidados</button>
+            <button id="btn-tab-padrinhos" onclick="switchTab('padrinhos')" class="px-6 py-3 rounded-md font-semibold text-xs tracking-wider uppercase bg-white text-gray-700 border border-borderGold shadow-sm hover:bg-gray-50 transition-all">Presentes para Padrinhos</button>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+            <!-- TAB CONVIDADOS -->
+            <div id="tab-convidados" class="space-y-4">
+                <!-- Quarto -->
+                <div class="bg-white rounded-lg border border-borderGold overflow-hidden shadow-sm">
+                    <div onclick="toggleAccordion(this)" class="bg-sand p-5 cursor-pointer flex justify-between items-center font-serif text-xl font-semibold text-luxuryBlue">
+                        <span>🛏️ Quarto / Cama</span>
+                        <i class="fas fa-chevron-down text-sm transition-transform duration-300"></i>
+                    </div>
+                    <div class="hidden p-6 border-t border-borderGold bg-white">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Jogo de Lençol</div><button onclick="openWhatsAppModal('Jogo de Lençol', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Jogo de cama</div><button onclick="openWhatsAppModal('Jogo de cama', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Edredom</div><button onclick="openWhatsAppModal('Edredom', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Cobertor</div><button onclick="openWhatsAppModal('Cobertor', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Travesseiro</div><button onclick="openWhatsAppModal('Travesseiro', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Espelho</div><button onclick="openWhatsAppModal('Espelho', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cozinha -->
+                <div class="bg-white rounded-lg border border-borderGold overflow-hidden shadow-sm">
+                    <div onclick="toggleAccordion(this)" class="bg-sand p-5 cursor-pointer flex justify-between items-center font-serif text-xl font-semibold text-luxuryBlue">
+                        <span>🍳 Cozinha</span>
+                        <i class="fas fa-chevron-down text-sm transition-transform duration-300"></i>
+                    </div>
+                    <div class="hidden p-6 border-t border-borderGold bg-white">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Jogo de talheres</div><button onclick="openWhatsAppModal('Jogo de talheres', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Jogo de facas</div><button onclick="openWhatsAppModal('Jogo de facas', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Concha / Espátula</div><button onclick="openWhatsAppModal('Concha / Espátula', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Microondas</div><button onclick="openWhatsAppModal('Microondas', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Jogo de copos</div><button onclick="openWhatsAppModal('Jogo de copos', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Jogo de Xícara</div><button onclick="openWhatsAppModal('Jogo de Xícara', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Garrafa térmica</div><button onclick="openWhatsAppModal('Garrafa térmica', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Jogo de pratos</div><button onclick="openWhatsAppModal('Jogo de pratos', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Jogo de panelas</div><button onclick="openWhatsAppModal('Jogo de panelas', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Potes / Mantimentos</div><button onclick="openWhatsAppModal('Potes / Mantimentos', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Liquidificador</div><button onclick="openWhatsAppModal('Liquidificador', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Batedeira</div><button onclick="openWhatsAppModal('Batedeira', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Airfryer</div><button onclick="openWhatsAppModal('Airfryer', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Chaleira elétrica</div><button onclick="openWhatsAppModal('Chaleira elétrica', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Sanduicheira</div><button onclick="openWhatsAppModal('Sanduicheira', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Panela elétrica</div><button onclick="openWhatsAppModal('Panela elétrica', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Travessas / Formas</div><button onclick="openWhatsAppModal('Travessas / Formas', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Toalha de mesa</div><button onclick="openWhatsAppModal('Toalha de mesa', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Lixeira Cozinha</div><button onclick="openWhatsAppModal('Lixeira Cozinha', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lavanderia -->
+                <div class="bg-white rounded-lg border border-borderGold overflow-hidden shadow-sm">
+                    <div onclick="toggleAccordion(this)" class="bg-sand p-5 cursor-pointer flex justify-between items-center font-serif text-xl font-semibold text-luxuryBlue">
+                        <span>🧺 Lavanderia / Limpeza & Outros</span>
+                        <i class="fas fa-chevron-down text-sm transition-transform duration-300"></i>
+                    </div>
+                    <div class="hidden p-6 border-t border-borderGold bg-white">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Aspirador de pó</div><button onclick="openWhatsAppModal('Aspirador de pó', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Mop</div><button onclick="openWhatsAppModal('Mop', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Cesto de roupas</div><button onclick="openWhatsAppModal('Cesto de roupas', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Sofá / Tapete</div><button onclick="openWhatsAppModal('Sofá / Tapete', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Cortinas</div><button onclick="openWhatsAppModal('Cortinas', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Kit Banheiro</div><button onclick="openWhatsAppModal('Kit Banheiro', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB PADRINHOS -->
+            <div id="tab-padrinhos" class="hidden space-y-4">
+                <div class="bg-white rounded-lg border border-borderGold overflow-hidden shadow-sm">
+                    <div onclick="toggleAccordion(this)" class="bg-sand p-5 cursor-pointer flex justify-between items-center font-serif text-xl font-semibold text-luxuryBlue">
+                        <span>🎁 Eletrodomésticos e Móveis (Padrinhos)</span>
+                        <i class="fas fa-chevron-down text-sm transition-transform duration-300"></i>
+                    </div>
+                    <div class="hidden p-6 border-t border-borderGold bg-white">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Cama / Colchão</div><button onclick="openWhatsAppModal('Cama / Colchão', 'padrinho')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Guarda-roupa</div><button onclick="openWhatsAppModal('Guarda-roupa', 'padrinho')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Geladeira</div><button onclick="openWhatsAppModal('Geladeira', 'padrinho')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Fogão</div><button onclick="openWhatsAppModal('Fogão', 'padrinho')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Armário</div><button onclick="openWhatsAppModal('Armário', 'padrinho')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Mesa de Jantar</div><button onclick="openWhatsAppModal('Mesa de Jantar', 'padrinho')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                            <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Máquina de lavar roupa</div><button onclick="openWhatsAppModal('Máquina de lavar roupa', 'padrinho')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="confirmacao" class="py-24 px-6 lg:px-24 bg-sand border-t border-borderGold">
+        <div class="text-center mb-16">
+            <h2 class="font-serif text-4xl text-burgundy font-normal mb-2">Confirmação de Presença</h2>
+            <div class="w-10 h-[1px] bg-gold mx-auto"></div>
+        </div>
+
+        <div class="max-w-xl mx-auto bg-white p-8 md:p-12 rounded-lg border border-borderGold shadow-md">
+            <form id="rsvpForm" class="space-y-6">
+                <div>
+                    <label class="block text-xs uppercase tracking-wider font-semibold text-luxuryBlue mb-2">Seu Nome Completo</label>
+                    <input type="text" id="guestName" required placeholder="Digite seu nome" class="w-full p-3.5 border border-borderGold rounded-md bg-white text-sm focus:outline-none focus:border-luxuryBlue">
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-wider font-semibold text-luxuryBlue mb-2">Acompanhantes</label>
+                    <select id="guestCompanion" class="w-full p-3.5 border border-borderGold rounded-md bg-white text-sm focus:outline-none focus:border-luxuryBlue">
+                        <option value="Apenas eu">Apenas eu</option>
+                        <option value="+ 1 Acompanhante">+ 1 Acompanhante</option>
+                        <option value="+ 2 Acompanhantes">+ 2 Acompanhantes</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-wider font-semibold text-luxuryBlue mb-2">Classe do Voo (Assento)</label>
+                    <select id="flightClass" class="w-full p-3.5 border border-borderGold rounded-md bg-white text-sm focus:outline-none focus:border-luxuryBlue">
+                        <option value="Classe VIP">👑 Classe VIP</option>
+                        <option value="Classe Alta">⭐ Classe Alta</option>
+                        <option value="Classe Econômica">✈️ Classe Econômica</option>
+                    </select>
+                </div>
+                <button type="button" onclick="generateBoardingPass()" class="w-full bg-luxuryBlue hover:bg-luxuryBlueLight text-white py-4 rounded-md uppercase tracking-[2px] text-xs font-semibold transition-colors shadow">Confirmar e Gerar Cartão de Embarque</button>
+            </form>
+
+            <!-- Boarding Pass Result Card -->
+            <div id="boardingPass" class="hidden mt-8 bg-white border-2 border-dashed border-burgundy p-6 rounded-lg relative">
+                <div class="flex justify-between items-center border-b border-borderGold pb-3 mb-4 text-burgundy font-bold text-xs">
+                    <span>✈️ CARTÃO DE EMBARQUE • CASAMENTO</span>
+                    <span id="passClassBadge" class="bg-burgundy text-white px-2.5 py-1 rounded text-[10px]"></span>
+                </div>
+                <div class="grid grid-cols-2 gap-4 text-sm mb-6">
+                    <div>
+                        <span class="block text-[10px] text-gray-400 uppercase tracking-wider">Convidado</span>
+                        <strong id="passName" class="text-gray-800"></strong>
+                    </div>
+                    <div>
+                        <span class="block text-[10px] text-gray-400 uppercase tracking-wider">Acompanhantes</span>
+                        <strong id="passCompanion" class="text-gray-800"></strong>
+                    </div>
+                    <div>
+                        <span class="block text-[10px] text-gray-400 uppercase tracking-wider">Destino</span>
+                        <strong class="text-gray-800">Irati, PR</strong>
+                    </div>
+                    <div>
+                        <span class="block text-[10px] text-gray-400 uppercase tracking-wider">Data</span>
+                        <strong class="text-gray-800">19/12/2026 • 15:00</strong>
+                    </div>
+                </div>
+                <p class="text-[11px] text-gray-500 text-center mb-4">Apresente este cartão digital ou impresso na portaria do evento.</p>
+                <button onclick="window.print()" class="w-full bg-burgundy hover:bg-burgundy-dark text-white py-2.5 rounded text-xs uppercase tracking-wider font-semibold transition-colors"><i class="fas fa-print"></i> Imprimir Cartão</button>
+            </div>
+        </div>
+    </section>
+
+    <div id="waModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white p-8 rounded-xl max-w-md w-full text-center border border-borderGold shadow-2xl">
+            <h3 class="font-serif text-2xl text-burgundy mb-2 font-bold">Falar com os Noivos</h3>
+            <p id="modalItemText" class="text-sm text-gray-600 mb-6">Com quem você deseja falar sobre o presente?</p>
+            <div class="flex flex-col gap-3">
+                <a id="btnWeslley" href="#" target="_blank" class="bg-[#25D366] hover:opacity-90 text-white py-3 px-4 rounded-md font-semibold text-sm flex items-center justify-center gap-2 transition-opacity">
+                    <i class="fab fa-whatsapp text-lg"></i> Falar com Weslley (19 98181-4224)
+                </a>
+                <a id="btnPoliana" href="#" target="_blank" class="bg-[#8B263E] hover:opacity-90 text-white py-3 px-4 rounded-md font-semibold text-sm flex items-center justify-center gap-2 transition-opacity">
+                    <i class="fab fa-whatsapp text-lg"></i> Falar com Poliana (42 9854-3755)
+                </a>
+            </div>
+            <button onclick="closeWhatsAppModal()" class="mt-6 text-gray-400 hover:text-gray-600 text-xs uppercase tracking-widest font-medium">Cancelar</button>
+        </div>
+    </div>
+
+    <footer class="bg-burgundy-dark text-white text-center py-16 px-6">
+        <h2 class="font-serif text-3xl text-gray-200 font-normal mb-2">Esperamos você na nossa festa!</h2>
+        <div class="font-serif text-xl tracking-[3px] text-gold mb-8">Weslley & Poliana</div>
+        <p class="text-xs text-gray-400">© 2026 Weslley & Poliana</p>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Gift Tabs Switching
+        function switchTab(tab) {
+            const btnConvidados = document.getElementById('btn-tab-convidados');
+            const btnPadrinhos = document.getElementById('btn-tab-padrinhos');
+            const tabConvidados = document.getElementById('tab-convidados');
+            const tabPadrinhos = document.getElementById('tab-padrinhos');
+
+            if(tab === 'convidados') {
+                btnConvidados.className = "px-6 py-3 rounded-md font-semibold text-xs tracking-wider uppercase bg-burgundy text-white shadow transition-all";
+                btnPadrinhos.className = "px-6 py-3 rounded-md font-semibold text-xs tracking-wider uppercase bg-white text-gray-700 border border-borderGold shadow-sm hover:bg-gray-50 transition-all";
+                tabConvidados.classList.remove('hidden');
+                tabPadrinhos.classList.add('hidden');
+            } else {
+                btnPadrinhos.className = "px-6 py-3 rounded-md font-semibold text-xs tracking-wider uppercase bg-burgundy text-white shadow transition-all";
+                btnConvidados.className = "px-6 py-3 rounded-md font-semibold text-xs tracking-wider uppercase bg-white text-gray-700 border border-borderGold shadow-sm hover:bg-gray-50 transition-all";
+                tabPadrinhos.classList.remove('hidden');
+                tabConvidados.classList.add('hidden');
+            }
+        }
+
+        // Accordion Toggle
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('i');
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // WhatsApp Modal Handling
+        function openWhatsAppModal(itemName, type) {
+            let msg = type === 'padrinho' 
+                ? `Olá! Como padrinho/madrinha, gostaria de oferecer o item: ${itemName}.` 
+                : `Olá! Gostaria de oferecer o presente: ${itemName}.`;
+            
+            const encodedMsg = encodeURIComponent(msg);
+            
+            document.getElementById('btnWeslley').href = `https://wa.me/5519981814224?text=${encodedMsg}`;
+            document.getElementById('btnPoliana').href = `https://wa.me/554298543755?text=${encodedMsg}`;
+            document.getElementById('modalItemText').innerText = `Presente selecionado: "${itemName}". Com quem deseja falar?`;
+            
+            document.getElementById('waModal').classList.remove('hidden');
+            document.getElementById('waModal').classList.add('flex');
+        }
+
+        function closeWhatsAppModal() {
+            document.getElementById('waModal').classList.add('hidden');
+            document.getElementById('waModal').classList.remove('flex');
+        }
+
+        // Countdown Timer to Dec 19, 2026 15:00:00
+        const weddingDate = new Date('December 19, 2026 15:00:00').getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = weddingDate - now;
+            if (diff > 0) {
+                document.getElementById('days').innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                document.getElementById('hours').innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                document.getElementById('mins').innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                document.getElementById('secs').innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+            }
+        }, 1000);
+
+        // Generate Boarding Pass
+        function generateBoardingPass() {
+            const name = document.getElementById('guestName').value.trim();
+            const companion = document.getElementById('guestCompanion').value;
+            const flightClass = document.getElementById('flightClass').value;
+            
+            if(!name) {
+                const errorBox = document.createElement('div');
+                errorBox.className = 'fixed top-6 right-6 bg-red-600 text-white px-6 py-3 rounded shadow-lg text-xs font-semibold z-50';
+                errorBox.innerText = 'Por favor, digite o seu nome completo.';
+                document.body.appendChild(errorBox);
+                setTimeout(() => errorBox.remove(), 3000);
+                return;
+            }
+
+            document.getElementById('passName').innerText = name;
+            document.getElementById('passCompanion').innerText = companion;
+            document.getElementById('passClassBadge').innerText = flightClass;
+            document.getElementById('boardingPass').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
