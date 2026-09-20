@@ -41,48 +41,38 @@
         html {
             scroll-behavior: smooth;
         }
-
        @media print {
-            /* Esconde tudo o resto do site */
-            body {
+            /* Esconde tudo na página menos o cartão */
+            body * {
                 visibility: hidden !important;
-                background: white !important;
-                height: 100vh !important;
-                margin: 0 !important;
             }
-
-            /* Torna o cartão e o seu conteúdo visíveis */
             #boardingPass, #boardingPass * {
                 visibility: visible !important;
             }
 
-            /* Centra o cartão vertical e horizontalmente na página A4 */
-            body {
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-            }
-
+            /* Põe o cartão no topo e centralizado na folha */
             #boardingPass {
-                position: relative !important;
-                width: 100% !important;
-                max-width: 650px !important; /* Mantém o cartão com uma largura elegante e não gigante */
-                margin: auto !important;
+                position: absolute !important;
+                left: 50% !important;
+                top: 40% !important;
+                transform: translate(-50%, -50%) !important;
+                width: 90% !important;
+                max-width: 600px !important;
                 box-shadow: none !important;
                 border: 2px dashed #591925 !important;
+                page-break-before: avoid !important;
                 page-break-after: avoid !important;
                 page-break-inside: avoid !important;
-                page-break-before: avoid !important;
             }
 
-            /* Esconde o botão de imprimir */
+            /* Tira o botão de imprimir do papel */
             #boardingPass button {
                 display: none !important;
             }
 
             @page {
-                size: A4 portrait;
-                margin: 15mm;
+                size: portrait;
+                margin: 10mm;
             }
         }
     </style>
