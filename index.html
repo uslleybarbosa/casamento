@@ -41,13 +41,36 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Regra de Impressão: Oculta tudo exceto o cartão de embarque */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #boardingPass, #boardingPass * {
+                visibility: visible;
+            }
+            #boardingPass {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                border: 2px dashed #591925 !important;
+                box-shadow: none !important;
+                margin: 0;
+            }
+            /* Esconde o botão de imprimir dentro da própria impressão */
+            #boardingPass button {
+                display: none !important;
+            }
+        }
     </style>
 </head>
-<body class="bg-white text-[#2C2C2C] font-sans antialiased selection:bg-burgundy selection:text-white">
+<body class="bg-white text-[#2C2C2C] font-sans antialiased selection:bg-burgundy selection:text-white overflow-x-hidden">
 
-    <header class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md z-50 flex justify-between items-center px-6 lg:px-16 py-4 border-b border-borderGold">
+    <header class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md z-50 flex justify-between items-center px-4 sm:px-6 lg:px-16 py-4 border-b border-borderGold">
         <div class="font-serif text-xl font-bold tracking-widest text-burgundy uppercase">W & P</div>
-        <div class="md:hidden text-xl text-burgundy cursor-pointer" id="mobile-menu-btn">
+        <div class="md:hidden text-xl text-burgundy cursor-pointer p-2" id="mobile-menu-btn">
             <i class="fas fa-bars"></i>
         </div>
         <nav class="hidden md:flex gap-8 items-center text-xs tracking-[2px] uppercase font-medium">
@@ -79,92 +102,89 @@
             <i class="fas fa-plane"></i>
         </div>
 
-        <div class="relative z-20 max-w-4xl mx-auto">
-            <p class="text-xs uppercase tracking-[4px] mb-4 text-gold font-semibold">De São Paulo para o Paraná • O Fim da Distância</p>
-            <h1 class="font-serif text-5xl md:text-7xl font-normal tracking-wide mb-3">Weslley & Poliana</h1>
-            <p class="text-sm md:text-base tracking-[3px] font-light mb-10">19 de Dezembro de 2026 • Irati, PR</p>
+        <div class="relative z-20 max-w-4xl mx-auto px-4">
+            <p class="text-[10px] sm:text-xs uppercase tracking-[3px] sm:tracking-[4px] mb-4 text-gold font-semibold">De São Paulo para o Paraná • O Fim da Distância</p>
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-normal tracking-wide mb-3">Weslley & Poliana</h1>
+            <p class="text-xs sm:text-sm md:text-base tracking-[2px] sm:tracking-[3px] font-light mb-8 sm:mb-10">19 de Dezembro de 2026 • Irati, PR</p>
             
-            <div class="flex justify-center gap-3 md:gap-6">
-                <div class="bg-white/10 backdrop-blur-md px-4 py-3 rounded-lg min-w-[75px] border border-white/20">
-                    <span id="days" class="block font-serif text-2xl md:text-3xl font-bold">00</span>
-                    <label class="text-[9px] uppercase tracking-wider text-white/80">Dias</label>
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 md:gap-6">
+                <div class="bg-white/10 backdrop-blur-md px-3 sm:px-4 py-2 sm:py-3 rounded-lg min-w-[65px] sm:min-w-[75px] border border-white/20">
+                    <span id="days" class="block font-serif text-xl sm:text-2xl md:text-3xl font-bold">00</span>
+                    <label class="text-[8px] sm:text-[9px] uppercase tracking-wider text-white/80">Dias</label>
                 </div>
-                <div class="bg-white/10 backdrop-blur-md px-4 py-3 rounded-lg min-w-[75px] border border-white/20">
-                    <span id="hours" class="block font-serif text-2xl md:text-3xl font-bold">00</span>
-                    <label class="text-[9px] uppercase tracking-wider text-white/80">Horas</label>
+                <div class="bg-white/10 backdrop-blur-md px-3 sm:px-4 py-2 sm:py-3 rounded-lg min-w-[65px] sm:min-w-[75px] border border-white/20">
+                    <span id="hours" class="block font-serif text-xl sm:text-2xl md:text-3xl font-bold">00</span>
+                    <label class="text-[8px] sm:text-[9px] uppercase tracking-wider text-white/80">Horas</label>
                 </div>
-                <div class="bg-white/10 backdrop-blur-md px-4 py-3 rounded-lg min-w-[75px] border border-white/20">
-                    <span id="mins" class="block font-serif text-2xl md:text-3xl font-bold">00</span>
-                    <label class="text-[9px] uppercase tracking-wider text-white/80">Minutos</label>
+                <div class="bg-white/10 backdrop-blur-md px-3 sm:px-4 py-2 sm:py-3 rounded-lg min-w-[65px] sm:min-w-[75px] border border-white/20">
+                    <span id="mins" class="block font-serif text-xl sm:text-2xl md:text-3xl font-bold">00</span>
+                    <label class="text-[8px] sm:text-[9px] uppercase tracking-wider text-white/80">Minutos</label>
                 </div>
-                <div class="bg-white/10 backdrop-blur-md px-4 py-3 rounded-lg min-w-[75px] border border-white/20">
-                    <span id="secs" class="block font-serif text-2xl md:text-3xl font-bold">00</span>
-                    <label class="text-[9px] uppercase tracking-wider text-white/80">Segundos</label>
+                <div class="bg-white/10 backdrop-blur-md px-3 sm:px-4 py-2 sm:py-3 rounded-lg min-w-[65px] sm:min-w-[75px] border border-white/20">
+                    <span id="secs" class="block font-serif text-xl sm:text-2xl md:text-3xl font-bold">00</span>
+                    <label class="text-[8px] sm:text-[9px] uppercase tracking-wider text-white/80">Segundos</label>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="historia" class="py-24 px-6 lg:px-24">
-        <div class="text-center mb-16">
-            <h2 class="font-serif text-4xl text-burgundy font-normal mb-2">Nossa História</h2>
+    <section id="historia" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-24">
+        <div class="text-center mb-12 sm:mb-16">
+            <h2 class="font-serif text-3xl sm:text-4xl text-burgundy font-normal mb-2">Nossa História</h2>
             <div class="w-10 h-[1px] bg-gold mx-auto"></div>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center max-w-6xl mx-auto">
             <div>
-                <h3 class="font-serif text-3xl text-luxuryBlue font-normal mb-6">O Fim da Distância</h3>
-                <p class="text-gray-600 font-light mb-4 text-base leading-relaxed">São Paulo e Paraná finalmente unidas no mesmo destino: o altar. Foram anos de voos frequentes pelo Aeroporto de Viracopos, pontes aéreas e saudades que agora viram lembrança boa.</p>
-                <p class="text-gray-600 font-light text-base leading-relaxed">Mal podemos esperar para celebrar este grande dia ao lado de quem amamos e faz parte da nossa trajetória.</p>
+                <h3 class="font-serif text-2xl sm:text-3xl text-luxuryBlue font-normal mb-4 sm:mb-6">O Fim da Distância</h3>
+                <p class="text-gray-600 font-light mb-4 text-sm sm:text-base leading-relaxed">São Paulo e Paraná finalmente unidas no mesmo destino: o altar. Foram anos de voos frequentes pelo Aeroporto de Viracopos, pontes aéreas e saudades que agora viram lembrança boa.</p>
+                <p class="text-gray-600 font-light text-sm sm:text-base leading-relaxed">Mal podemos esperar para celebrar este grande dia ao lado de quem amamos e faz parte da nossa trajetória.</p>
             </div>
             <div class="relative rounded-lg overflow-hidden shadow-2xl border border-borderGold group">
                 <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80" alt="Aeroporto de Viracopos" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute bottom-0 left-0 w-full bg-luxuryBlue/85 text-white text-center py-2.5 text-xs tracking-wider">
-        
-                </div>
             </div>
         </div>
     </section>
 
-    <section id="local" class="py-24 px-6 lg:px-24 bg-sand">
-        <div class="text-center mb-16">
-            <h2 class="font-serif text-4xl text-burgundy font-normal mb-2">Local & Horário</h2>
+    <section id="local" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-24 bg-sand">
+        <div class="text-center mb-12 sm:mb-16">
+            <h2 class="font-serif text-3xl sm:text-4xl text-burgundy font-normal mb-2">Local & Horário</h2>
             <div class="w-10 h-[1px] bg-gold mx-auto"></div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div class="bg-white p-10 rounded-lg text-center border border-borderGold shadow-sm hover:-translate-y-1 transition-transform">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+            <div class="bg-white p-6 sm:p-10 rounded-lg text-center border border-borderGold shadow-sm hover:-translate-y-1 transition-transform">
                 <i class="fas fa-calendar-alt text-3xl text-luxuryBlue mb-4"></i>
                 <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">Data</h3>
-                <p class="text-gray-600 font-light">19 de Dezembro de 2026</p>
+                <p class="text-gray-600 font-light text-sm sm:text-base">19 de Dezembro de 2026</p>
                 <p class="text-xs text-gray-500 mt-1">Sábado às 15:00</p>
             </div>
-            <div class="bg-white p-10 rounded-lg text-center border border-borderGold shadow-sm hover:-translate-y-1 transition-transform">
+            <div class="bg-white p-6 sm:p-10 rounded-lg text-center border border-borderGold shadow-sm hover:-translate-y-1 transition-transform">
                 <i class="fas fa-map-marker-alt text-3xl text-luxuryBlue mb-4"></i>
                 <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">Endereço</h3>
-                <p class="text-gray-600 font-light">Salão de Festas</p>
+                <p class="text-gray-600 font-light text-sm sm:text-base">Salão de Festas</p>
                 <div class="bg-sand p-3 rounded mt-3 text-xs text-burgundy font-medium border border-borderGold">
                     R. Ângela Borazo Bonete, 4<br>Irati – PR
                 </div>
             </div>
-            <div class="bg-white p-10 rounded-lg text-center border border-borderGold shadow-sm hover:-translate-y-1 transition-transform">
+            <div class="bg-white p-6 sm:p-10 rounded-lg text-center border border-borderGold shadow-sm hover:-translate-y-1 transition-transform">
                 <i class="fas fa-palette text-3xl text-luxuryBlue mb-4"></i>
                 <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">Dress Code</h3>
-                <p class="text-gray-600 font-light">Esporte Fino / Social</p>
+                <p class="text-gray-600 font-light text-sm sm:text-base">Esporte Fino / Social</p>
                 <p class="text-xs text-gray-500 mt-1">Paleta: Bordô, Branco e Azul</p>
             </div>
         </div>
     </section>
 
-    <section id="hospedagem" class="py-24 px-6 lg:px-24">
-        <div class="text-center mb-12">
-            <h2 class="font-serif text-4xl text-burgundy font-normal mb-2">Hospedagem em Irati</h2>
+    <section id="hospedagem" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-24">
+        <div class="text-center mb-10 sm:mb-12">
+            <h2 class="font-serif text-3xl sm:text-4xl text-burgundy font-normal mb-2">Hospedagem em Irati</h2>
             <div class="w-10 h-[1px] bg-gold mx-auto"></div>
         </div>
-        <p class="text-center max-w-2xl mx-auto text-gray-600 text-sm font-light mb-16">
+        <p class="text-center max-w-2xl mx-auto text-gray-600 text-xs sm:text-sm font-light mb-12 sm:mb-16 px-2">
             Para os convidados que vêm de longe, separamos as opções em Irati/PR com valores de referência e links diretos para contato ou localização.
         </p>
 
         <div class="max-w-6xl mx-auto">
-            <h3 class="font-serif text-2xl text-luxuryBlue mb-8 pb-2 border-b border-borderGold">💰 Opções Mais Econômicas e Indicadas</h3>
+            <h3 class="font-serif text-xl sm:text-2xl text-luxuryBlue mb-6 sm:mb-8 pb-2 border-b border-borderGold">💰 Opções Mais Econômicas e Indicadas</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Hotel 1 -->
                 <div class="bg-white p-6 rounded-lg border border-borderGold shadow-sm flex flex-col justify-between">
@@ -248,13 +268,13 @@
         </div>
     </section>
 
-    <section id="presentes" class="py-24 px-6 lg:px-24 bg-sand">
-        <div class="text-center mb-12">
-            <h2 class="font-serif text-4xl text-burgundy font-normal mb-2">Lista de Presentes</h2>
+    <section id="presentes" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-24 bg-sand">
+        <div class="text-center mb-10 sm:mb-12">
+            <h2 class="font-serif text-3xl sm:text-4xl text-burgundy font-normal mb-2">Lista de Presentes</h2>
             <div class="w-10 h-[1px] bg-gold mx-auto"></div>
         </div>
 
-        <div class="flex justify-center gap-4 mb-12">
+        <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-10 sm:mb-12">
             <button id="btn-tab-convidados" onclick="switchTab('convidados')" class="px-6 py-3 rounded-md font-semibold text-xs tracking-wider uppercase bg-burgundy text-white shadow transition-all">Presentes para Convidados</button>
             <button id="btn-tab-padrinhos" onclick="switchTab('padrinhos')" class="px-6 py-3 rounded-md font-semibold text-xs tracking-wider uppercase bg-white text-gray-700 border border-borderGold shadow-sm hover:bg-gray-50 transition-all">Presentes para Padrinhos</button>
         </div>
@@ -264,11 +284,11 @@
             <div id="tab-convidados" class="space-y-4">
                 <!-- Quarto -->
                 <div class="bg-white rounded-lg border border-borderGold overflow-hidden shadow-sm">
-                    <div onclick="toggleAccordion(this)" class="bg-sand p-5 cursor-pointer flex justify-between items-center font-serif text-xl font-semibold text-luxuryBlue">
+                    <div onclick="toggleAccordion(this)" class="bg-sand p-4 sm:p-5 cursor-pointer flex justify-between items-center font-serif text-lg sm:text-xl font-semibold text-luxuryBlue">
                         <span>🛏️ Quarto / Cama</span>
                         <i class="fas fa-chevron-down text-sm transition-transform duration-300"></i>
                     </div>
-                    <div class="hidden p-6 border-t border-borderGold bg-white">
+                    <div class="hidden p-4 sm:p-6 border-t border-borderGold bg-white">
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                             <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Jogo de Lençol</div><button onclick="openWhatsAppModal('Jogo de Lençol', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
                             <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Jogo de cama</div><button onclick="openWhatsAppModal('Jogo de cama', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
@@ -281,11 +301,11 @@
                 </div>
                 <!-- Cozinha -->
                 <div class="bg-white rounded-lg border border-borderGold overflow-hidden shadow-sm">
-                    <div onclick="toggleAccordion(this)" class="bg-sand p-5 cursor-pointer flex justify-between items-center font-serif text-xl font-semibold text-luxuryBlue">
+                    <div onclick="toggleAccordion(this)" class="bg-sand p-4 sm:p-5 cursor-pointer flex justify-between items-center font-serif text-lg sm:text-xl font-semibold text-luxuryBlue">
                         <span>🍳 Cozinha</span>
                         <i class="fas fa-chevron-down text-sm transition-transform duration-300"></i>
                     </div>
-                    <div class="hidden p-6 border-t border-borderGold bg-white">
+                    <div class="hidden p-4 sm:p-6 border-t border-borderGold bg-white">
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                             <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Jogo de talheres</div><button onclick="openWhatsAppModal('Jogo de talheres', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
                             <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Jogo de facas</div><button onclick="openWhatsAppModal('Jogo de facas', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
@@ -311,11 +331,11 @@
                 </div>
                 <!-- Lavanderia -->
                 <div class="bg-white rounded-lg border border-borderGold overflow-hidden shadow-sm">
-                    <div onclick="toggleAccordion(this)" class="bg-sand p-5 cursor-pointer flex justify-between items-center font-serif text-xl font-semibold text-luxuryBlue">
+                    <div onclick="toggleAccordion(this)" class="bg-sand p-4 sm:p-5 cursor-pointer flex justify-between items-center font-serif text-lg sm:text-xl font-semibold text-luxuryBlue">
                         <span>🧺 Lavanderia / Limpeza & Outros</span>
                         <i class="fas fa-chevron-down text-sm transition-transform duration-300"></i>
                     </div>
-                    <div class="hidden p-6 border-t border-borderGold bg-white">
+                    <div class="hidden p-4 sm:p-6 border-t border-borderGold bg-white">
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                             <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Aspirador de pó</div><button onclick="openWhatsAppModal('Aspirador de pó', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
                             <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Mop</div><button onclick="openWhatsAppModal('Mop', 'convidado')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
@@ -331,11 +351,11 @@
             <!-- TAB PADRINHOS -->
             <div id="tab-padrinhos" class="hidden space-y-4">
                 <div class="bg-white rounded-lg border border-borderGold overflow-hidden shadow-sm">
-                    <div onclick="toggleAccordion(this)" class="bg-sand p-5 cursor-pointer flex justify-between items-center font-serif text-xl font-semibold text-luxuryBlue">
+                    <div onclick="toggleAccordion(this)" class="bg-sand p-4 sm:p-5 cursor-pointer flex justify-between items-center font-serif text-lg sm:text-xl font-semibold text-luxuryBlue">
                         <span>🎁 Eletrodomésticos e Móveis (Padrinhos)</span>
                         <i class="fas fa-chevron-down text-sm transition-transform duration-300"></i>
                     </div>
-                    <div class="hidden p-6 border-t border-borderGold bg-white">
+                    <div class="hidden p-4 sm:p-6 border-t border-borderGold bg-white">
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                             <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Cama / Colchão</div><button onclick="openWhatsAppModal('Cama / Colchão', 'padrinho')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
                             <div class="bg-sand p-3 rounded border border-borderGold flex flex-col justify-between gap-3"><div class="text-xs font-medium flex items-center gap-2"><input type="checkbox" class="accent-burgundy w-4 h-4"> Guarda-roupa</div><button onclick="openWhatsAppModal('Guarda-roupa', 'padrinho')" class="bg-[#25D366] text-white py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fab fa-whatsapp"></i> Escolher</button></div>
@@ -351,13 +371,13 @@
         </div>
     </section>
 
-    <section id="confirmacao" class="py-24 px-6 lg:px-24 bg-sand border-t border-borderGold">
-        <div class="text-center mb-16">
-            <h2 class="font-serif text-4xl text-burgundy font-normal mb-2">Confirmação de Presença</h2>
+    <section id="confirmacao" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-24 bg-sand border-t border-borderGold">
+        <div class="text-center mb-12 sm:mb-16">
+            <h2 class="font-serif text-3xl sm:text-4xl text-burgundy font-normal mb-2">Confirmação de Presença</h2>
             <div class="w-10 h-[1px] bg-gold mx-auto"></div>
         </div>
 
-        <div class="max-w-xl mx-auto bg-white p-8 md:p-12 rounded-lg border border-borderGold shadow-md">
+        <div class="max-w-xl mx-auto bg-white p-6 sm:p-8 md:p-12 rounded-lg border border-borderGold shadow-md">
             <form id="rsvpForm" class="space-y-6">
                 <div>
                     <label class="block text-xs uppercase tracking-wider font-semibold text-luxuryBlue mb-2">Seu Nome Completo</label>
@@ -391,7 +411,7 @@
                 <div class="grid grid-cols-2 gap-4 text-sm mb-6">
                     <div>
                         <span class="block text-[10px] text-gray-400 uppercase tracking-wider">Convidado</span>
-                        <strong id="passName" class="text-gray-800"></strong>
+                        <strong id="passName" class="text-gray-800 break-words"></strong>
                     </div>
                     <div>
                         <span class="block text-[10px] text-gray-400 uppercase tracking-wider">Acompanhantes</span>
@@ -413,7 +433,7 @@
     </section>
 
     <div id="waModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div class="bg-white p-8 rounded-xl max-w-md w-full text-center border border-borderGold shadow-2xl">
+        <div class="bg-white p-6 sm:p-8 rounded-xl max-w-md w-full text-center border border-borderGold shadow-2xl">
             <h3 class="font-serif text-2xl text-burgundy mb-2 font-bold">Falar com os Noivos</h3>
             <p id="modalItemText" class="text-sm text-gray-600 mb-6">Com quem você deseja falar sobre o presente?</p>
             <div class="flex flex-col gap-3">
