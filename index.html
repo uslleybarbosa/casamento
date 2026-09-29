@@ -78,9 +78,9 @@
         </div>
 
         <div class="relative z-20 max-w-4xl mx-auto px-4">
-            <p class="text-[10px] sm:text-xs uppercase tracking-[3px] sm:tracking-[4px] mb-4 text-gold font-semibold">SÃO PAULO -> PARANÃ • A DISTÂNCIA TERMINA AQUI</p>
+            <p class="text-[10px] sm:text-xs uppercase tracking-[3px] sm:tracking-[4px] mb-4 text-gold font-semibold">SÃO PAULO <span class="text-white/70 mx-1">✈</span> PARANÁ &bull; A DISTÂNCIA TERMINA AQUI</p>
             <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-normal tracking-wide mb-3">Weslley & Poliana</h1>
-            <p class="text-xs sm:text-sm md:text-base tracking-[2px] sm:tracking-[3px] font-light mb-8 sm:mb-10">19 de Setembro de 2026 • Irati, PR</p>
+            <p class="text-xs sm:text-sm md:text-base tracking-[2px] sm:tracking-[3px] font-light mb-8 sm:mb-10">19 de Dezembro de 2026 • Irati, PR</p>
             
             <div class="flex flex-wrap justify-center gap-2 sm:gap-4 md:gap-6">
                 <div class="bg-white/10 backdrop-blur-md px-3 sm:px-4 py-2 sm:py-3 rounded-lg min-w-[65px] sm:min-w-[75px] border border-white/20">
@@ -110,7 +110,7 @@
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center max-w-6xl mx-auto">
             <div>
-                <h3 class="font-serif text-2xl sm:text-3xl text-luxuryBlue font-normal mb-4 sm:mb-6">✈️ VOO PW1909 — DESTINO: NOSSO PARA SEMPRE</h3>
+                <h3 class="font-serif text-2xl sm:text-3xl text-luxuryBlue font-normal mb-4 sm:mb-6">VOO PW1912 — DESTINO: NOSSO PARA SEMPRE</h3>
                 <p class="text-gray-600 font-light mb-4 text-sm sm:text-base leading-relaxed">Senhores passageiros, preparem seus corações, pois está chegando a hora de embarcar em uma das viagens mais importantes da nossa vida.</p>
                 
                 <p class="text-gray-600 font-light mb-4 text-sm sm:text-base leading-relaxed">Foram anos de encontros, despedidas, quilômetros de distância, saudades e sonhos que nos trouxeram até aqui.</p>
@@ -145,15 +145,15 @@
             <div class="bg-white p-6 sm:p-10 rounded-lg text-center border border-borderGold shadow-sm hover:-translate-y-1 transition-transform">
                 <i class="fas fa-calendar-alt text-3xl text-luxuryBlue mb-4"></i>
                 <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">Data</h3>
-                <p class="text-gray-600 font-light text-sm sm:text-base">19 de Setembro de 2026</p>
+                <p class="text-gray-600 font-light text-sm sm:text-base">19 de Dezembro de 2026</p>
                 <p class="text-xs text-gray-500 mt-1">Sábado às 16h</p>
             </div>
             <div class="bg-white p-6 sm:p-10 rounded-lg text-center border border-borderGold shadow-sm hover:-translate-y-1 transition-transform">
                 <i class="fas fa-map-marker-alt text-3xl text-luxuryBlue mb-4"></i>
                 <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">Endereço</h3>
-                <p class="text-gray-600 font-light text-sm sm:text-base">Recanto Lagoa</p>
-                <div class="bg-sand p-3 rounded mt-3 text-xs text-burgundy font-medium border border-borderGold">
-                    Irati – PR
+                <p class="text-gray-600 font-light text-sm sm:text-base">Recanto Lagoa Eventos</p>
+                <div class="bg-sand p-3 rounded mt-3 text-xs text-burgundy font-medium border border-borderGold leading-relaxed">
+                    Rua Ângela Borazo Bonete, 4 – Bairro Lagoa, Irati – PR
                 </div>
             </div>
             <div class="bg-white p-6 sm:p-10 rounded-lg text-center border border-borderGold shadow-sm hover:-translate-y-1 transition-transform">
@@ -388,7 +388,7 @@
                     <select id="flightClass" class="w-full p-3.5 border border-borderGold rounded-md bg-white text-sm focus:outline-none focus:border-luxuryBlue">
                         <option value="Classe VIP - Pais e avós">👑 Classe VIP - Pais e avós</option>
                         <option value="Classe Alta - Padrinhos e madrinhas">⭐ Classe Alta - Padrinhos e madrinhas</option>
-                        <option value="Classe Econômica - Amigos">✈️ Classe Econômica - Amigos</option>
+                        <option value="Classe Econômica - Familiares e Amigos">✈️ Classe Econômica - Familiares e Amigos</option>
                     </select>
                 </div>
                 <button type="button" onclick="generateBoardingPass()" class="w-full bg-luxuryBlue hover:bg-luxuryBlueLight text-white py-4 rounded-md uppercase tracking-[2px] text-xs font-semibold transition-colors shadow">Confirmar e Gerar Cartão de Embarque</button>
@@ -414,7 +414,7 @@
                     </div>
                     <div>
                         <span class="block text-[10px] text-gray-400 uppercase tracking-wider">Data</span>
-                        <strong class="text-gray-800">19/09/2026 • 16h</strong>
+                        <strong class="text-gray-800">19/12/2026 • 16h</strong>
                     </div>
                 </div>
                 <div class="bg-sand p-3 rounded border border-borderGold text-center">
@@ -503,7 +503,7 @@
             document.getElementById('waModal').classList.remove('flex');
         }
 
-        const weddingDate = new Date('September 19, 2026 16:00:00').getTime();
+        const weddingDate = new Date('December 19, 2026 16:00:00').getTime();
         setInterval(() => {
             const now = new Date().getTime();
             const diff = weddingDate - now;
